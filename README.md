@@ -1,2 +1,2 @@
 # auctio
-Auction module written with node.js, Mongodb
+Auction module written in node.js with Mongodb
