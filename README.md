@@ -98,35 +98,35 @@ For finishing sold item (already expired with bidding, buy-out with stepped bidd
 
 # References
   * ## initialize
-    - ### Argument
-        - #### db_uri:
+    * ### Argument
+        * #### db_uri:
             URI string for connecting to MongoDB (e.g., mongodb://localhost/db_name) (see [Mongoose Connection](http://mongoosejs.com/docs/connections.html))
-        - #### db_options:
+        * #### db_options:
             Options hash for MongoDB connection parameter (see [Mongoose Connection](http://mongoosejs.com/docs/connections.html))
-        - #### options:
+        * #### options:
             Options hash for Auctio configuration
-            - __currency_code__:
+            * __currency_code__:
                 Currencty code (Currently unused), default 'THB'
-            - __max_watch_list__:
+            * __max_watch_list__:
                 Maximum number of item watch list (Currently unused), default 5
-            - __max_bid_count__:
+            * __max_bid_count__:
                 Maximum number of concurrent bidding per user (Currently unused), default 5
-            - __max_offer_count__:
+            * __max_offer_count__:
                 Maximum number of concurrent offering per user (Currently unused), default 5
-            - __default_duration__:
+            * __default_duration__:
                 Default expired duration for offered item, default 3 days
-            - __image_size__:
+            * __image_size__:
                 Maximum allowed image size, default 200KBytes
-            - __max_image_coount__:
+            * __max_image_coount__:
                 Maximum number of images per item, default 5
-            - __image_type__:
+            * __image_type__:
                 Allowed image types, default jpg and png
-            - __step_price__:
+            * __step_price__:
                 Default stepping price when bidding with auto step price, default 1
-    - ### Return Value
-        - #### On success:
+    * ### Return Value
+        * #### On success:
           Return Promise with resolved value = true
-        - #### On failure:
+        * #### On failure:
           Return Promise with rejected reason string/error
 
   * ## terminate
