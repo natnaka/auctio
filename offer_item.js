@@ -112,6 +112,17 @@ function offerItem(name, begin_price, category, expired_at, seller, options = {}
       expired_at = new Date();
       expired_at.setDate(expired_at.getDate() + global.auctioConfig.default_duration);
     }
+
+    if(buy_out_price && buy_out_price > 0) {
+      if(buy_out_price < begin_price) {
+        return reject("Buy out price must be greater than begin price");
+      }
+
+      var diff_price = buy_out_price - begin_price;
+      if(diff_price%step_price != 0) {
+        return reject("Buy out price must be aligned to step price");
+      }
+    }
     
     cat.getCategoryPathArray(category).then(function(categories) {
 
@@ -313,16 +324,17 @@ function searchItemBasic(options = {}) {
     var begin_range = options.begin_range; // [min, max], range of current bid price
     var buy_out_range = options.buy_out_range;
     var buy_out = options.buy_out;
-    var sold = options.sold || false;
+    var sold = options.sold;
 
     var sort = options.sort;
-    var nofields = options.nofields || [];
+    var omits = options.omits || [];
 
     var criterias = {};
     var fields    = {};
     var controls  = {};
 
     // Building criterias -----
+    if(id) criterias._id = id;
     if(category) criterias.category = category;
     if(name) criterias.name = name;
     if(brand) criterias.brand = brand;
@@ -390,10 +402,16 @@ function searchItemBasic(options = {}) {
       criterias.buy_out_price = null;
     }
 
-    criterias.sold = sold;
+    if(sold != undefined) {
+      if(sold == true) {
+        criterias.sold = true;
+      } else {
+        criterias.sold = false;
+      }
+    }
 
     // Building field displays
-    nofields.forEach(function(f) {
+    omits.forEach(function(f) {
       fields[f] = 0;
     });
 
