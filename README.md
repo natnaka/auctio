@@ -8,15 +8,15 @@ Auction module written in node.js with Mongodb(mongoose)
   - mongoose:  npm install mongoose
 
 # Basic Example
-  1. Including Auctio
+  i. Including Auctio
 ```javascript
     var auctio = require('/path-to-auctio/index');
 ```
-  2. Initialize Auctio
+  i. Initialize Auctio
 ```javascript
     auctio.initialize('mongodb://host-information/<db name>').then(init_succes_callback, init_failed_callback);
 ```
-  4. How to add category
+  i. How to add category
 ```javascript
     // Category hierarchy help us to search item by category name
     // Add xxx at top root level
@@ -35,26 +35,26 @@ Auction module written in node.js with Mongodb(mongoose)
     auctio.addCategory("zzz", {parentName: "yyy"});
 ```
 
-  5. How to remove category (and its children)
+  i. How to remove category (and its children)
 ```javascript
     // Remove aaa and its child, bbb
     auctio.removeCategory("aaa");
 ```
 
-  6. How to offer(sell) item
+  i. How to offer(sell) item
 ```javascript
     var expired_at = new Date();
     expired_at.setDate(expired_at.getDate() + 7); // Expired at next 7 days
     auctio.offerItem('Item Name', 2000, 'zzz', expired_at, "seller's username/token", {buy_out_price: 10000, step_price: 100, brand: 'brand name'})
           .then(offer_success_callback, offer_failed_callback);
 ```
-  7. How to bid(buy) item
+  i. How to bid(buy) item
 ```javascript
     auctio.bidItem(ObjectId("..."), 4000, "buyer's username/token")
           .then(bid_success_callback, bid_failed_callback);
 ```
 
-  8. How to call house-keeping for finishing sold item (already expired with bidding, buy-out with stepped bidding)
+  i. How to call house-keeping for finishing sold item (already expired with bidding, buy-out with stepped bidding)
 ```javascript
     // This function should be cron/scheduler task
     // It set sold flag for some situations of offered item that has been sold
@@ -65,7 +65,7 @@ Auction module written in node.js with Mongodb(mongoose)
     auctio.houseKeeping(keeping_datetime).then(success_keeping_callback, failed_keeping_callback);
 ```
 
-  9. How to query items
+  i. How to query items
 ```javascript
     // Searching all item under xxx category
     auctio.searchItemBasic({category: "xxx"});
@@ -82,7 +82,7 @@ Auction module written in node.js with Mongodb(mongoose)
     // For more searching criteria, please see reference below
 ```
 
-  10. Terminate Auctio
+  i. Terminate Auctio
 ```javascript
     terminate_success_callback = function(result) {
       // Do somethings
