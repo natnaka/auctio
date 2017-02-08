@@ -98,79 +98,79 @@ For finishing sold item (already expired with bidding, buy-out with stepped bidd
 
 # References
   * ## initialize
-    * ### Argument
-        * #### db_uri:
+    - Argument
+        - db_uri:
             URI string for connecting to MongoDB (e.g., mongodb://localhost/db_name) (see [Mongoose Connection](http://mongoosejs.com/docs/connections.html))
-        * #### db_options:
+        - db_options:
             Options hash for MongoDB connection parameter (see [Mongoose Connection](http://mongoosejs.com/docs/connections.html))
-        * #### options:
+        - options:
             Options hash for Auctio configuration
-            * __currency_code__:
+            - __currency_code__:
                 Currencty code (Currently unused), default 'THB'
-            * __max_watch_list__:
+            - __max_watch_list__:
                 Maximum number of item watch list (Currently unused), default 5
-            * __max_bid_count__:
+            - __max_bid_count__:
                 Maximum number of concurrent bidding per user (Currently unused), default 5
-            * __max_offer_count__:
+            - __max_offer_count__:
                 Maximum number of concurrent offering per user (Currently unused), default 5
-            * __default_duration__:
+            - __default_duration__:
                 Default expired duration for offered item, default 3 days
-            * __image_size__:
+            - __image_size__:
                 Maximum allowed image size, default 200KBytes
-            * __max_image_coount__:
+            - __max_image_coount__:
                 Maximum number of images per item, default 5
-            * __image_type__:
+            - __image_type__:
                 Allowed image types, default jpg and png
-            * __step_price__:
+            - __step_price__:
                 Default stepping price when bidding with auto step price, default 1
-    * ### Return Value
-        * #### On success:
+    - Return Value
+        - On success:
           Return Promise with resolved value = true
-        * #### On failure:
+        - On failure:
           Return Promise with rejected reason string/error
 
   * ## terminate
-    - ### Return Value
+    - Return Value
         Return Promise with resolved value = true
 
-  * ### addCategory
-    - ### Argument
-        - #### name:
+  * ## addCategory
+    - Argument
+        - name:
             Category name string
-        - #### options:
+        - options:
             - __parentName__:
                 Name of parent category
             - __description__:
                 Description message
-    - ### Return Value
-        - #### On success:
+    - Return Value
+        - On success:
           Return Promise with resolved value = created category object
-        - #### On failure:
+        - On failure:
           Return Promise with rejected reason string/error
 
-  * ### removeCategory
-    - ### Argument
-        - #### name:
+  * ## removeCategory
+    - Argument
+        - name:
             Category name to be removed
-    - ### Return Value
-        - #### On success:
+    - Return Value
+        - On success:
           Return Promise with resolved value = true
-        - #### On failure:
+        - On failure:
           Return Promise with rejected reason string/error
 
-  * ### offerItem
-    - ### Argument
-        - #### name:
+  * ## offerItem
+    - Argument
+        - name:
             String name of item to be offered
-        - #### begin_price:
+        - begin_price:
             Starting price for offered item
-        - #### category:
+        - category:
             Category name of an item
-        - #### expired_at:
+        - expired_at:
             Datetime when offered item will be expired
-        - #### seller:
+        - seller:
             String name/token of user who offer an item
-        - #### options:
+        - options:
             - __brand__:
                 Item brand name
             - __description__:
@@ -183,29 +183,29 @@ For finishing sold item (already expired with bidding, buy-out with stepped bidd
                 Offered price for instantly buy out
             - __step_price__:
                 Stepping price for auto price bidding
-    - ### Return Value
-        - #### On success:
+    - Return Value
+        - On success:
           Return Promise with resolved value = offered item object
-        - #### On failure:
+        - On failure:
           Return Promise with rejected reason string/error
 
-  * ### bidItem
-    - ### Argument
-        - #### offerItemId:
+  * ## bidItem
+    - Argument
+        - offerItemId:
             An ObjectId of offered item
-        - #### price:
+        - price:
             Amount of price for bidding, 0 for auto pricing
-        - #### buyer:
+        - buyer:
             String name/token of user who bid an item
-    - ### Return Value
-        - #### On success:
+    - Return Value
+        - On success:
           Return Promise with resolved value = offered item ObjectId
-        - #### On failure:
+        - On failure:
           Return Promise with rejected reason string/error
 
-  * ### searchItemBasic
-    - ### Argument
-        - #### options:
+  * ## searchItemBasic
+    - Argument
+        - options:
             - __limit__:
                 Limited number of item from searching
             - __offset__:
@@ -234,10 +234,10 @@ For finishing sold item (already expired with bidding, buy-out with stepped bidd
                 Array of omitted field names
             -__sort__:
                 Hash of sorted fields (e.g., {buy_out_price: -1, name: 1} mean sorted by buy_out_price descending and by name ascending)
-    - ### Return Value
-        - #### On success:
+    - Return Value
+        - On success:
           Return Promise with resolved value = array of items
-        - #### On failure:
+        - On failure:
           Return Promise with rejected reason string/error
 
 # Contact
