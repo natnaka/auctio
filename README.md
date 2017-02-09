@@ -5,12 +5,16 @@ Auction module written in node.js with Mongodb(mongoose)
   - npm:       https://www.npmjs.com/
   - node.js:   https://nodejs.org/en/download/
   - MongoDB:   https://docs.mongodb.com/manual/installation/
-  - mongoose:  npm install mongoose
+
+# Installation
+```sh
+    $ npm install auctio
+```
 
 # Basic Example
 ## Including Auctio
 ```javascript
-    var auctio = require('/path-to-auctio/index');
+    var auctio = require('auctio');
 ```
 ## Initialize Auctio
 ```javascript
