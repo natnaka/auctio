@@ -1,6 +1,6 @@
 {
   "name": "auctio",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Auction framework for Node.js and MongoDB",
   "main": "index.js",
   "dependencies": {
