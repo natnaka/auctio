@@ -205,7 +205,11 @@ function bidItem(offerItemId, price, buyer) {
     OfferItem.findOne({_id: offerItemId}, function(err, item) {
       if(err) return reject(err);
 
-      if(item.buy_out_price > 0 && item.current_bid_price >= item.buy_out_price && item.sold == false) {
+      if(item.sold) {
+        return reject("This item has been sold");
+      }
+
+      if(item.current_buyer && item.buy_out_price > 0 && item.current_bid_price >= item.buy_out_price && item.sold == false) {
         item.sold = true;
         item.save(function(err) {
           if(err) return reject(err);
@@ -220,7 +224,7 @@ function bidItem(offerItemId, price, buyer) {
           {
             _id: offerItemId,
             sold: false,
-            current_bid_price: {$lt: price},
+            current_bid_price: {$lte: price},
             buy_out_price: {$gt: 0, $lte: price},
             $or: [{expired_at: null}, {expired_at: {$gt: bidTime}}]
           },
