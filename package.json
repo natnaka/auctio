@@ -1,0 +1,15 @@
+{
+  "name": "auctio",
+  "version": "0.1.1",
+  "description": "Auction framework for Node.js and MongoDB",
+  "main": "index.js",
+  "dependencies": {
+    "mongoose": "^4.7.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Natnaka Sundaranaga",
+  "license": "MIT"
+}
