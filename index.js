@@ -75,7 +75,11 @@ module.exports = {
 
   // For house keeping of all sold items(without sold flag set)
   // It should be called by cron/scheduler
-  houseKeeping: oi.houseKeeping
+  houseKeeping: oi.houseKeeping,
+
+  // Export OfferItem collection for especially document access
+  // Emphasize that for advance usage
+  OfferItem: oi.OfferItem
 }
 
 
